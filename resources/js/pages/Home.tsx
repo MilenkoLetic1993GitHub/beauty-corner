@@ -323,7 +323,7 @@ export default function Home({
                     </div>
 
                     <nav className="hidden items-center gap-8 lg:flex">
-                        <NavLink>Home</NavLink>
+                        <NavLink>Milenko test stuff</NavLink>
                         <NavLink>Preise</NavLink>
                         <NavLink>Über uns</NavLink>
                         <NavLink>Galerie</NavLink>
