@@ -146,7 +146,14 @@ function HeadAssets() {
 }
 
 function BrandLogo({ className = "" }: { className?: string }) {
-    return <img src={assets.logoImage} alt="Beauty Corner logo" className={className} />;
+    return (
+        <img
+            src={assets.logoImage}
+            alt="Beauty Corner logo"
+            decoding="async"
+            className={className}
+        />
+    );
 }
 
 function SectionHeading({
@@ -194,7 +201,7 @@ function PrimaryButton({
         <button
             className={`font-clean rounded-none border px-8 py-4 text-[12px] uppercase tracking-[0.28em] transition ${
                 dark
-                    ? "border-white/30 text-white hover:border-[#d8bea5] hover:text-[#d8bea5]"
+                    ? "border-white/30 text-white hover:border-[#d8bea5] hover:text-[#d8bea5] hover:bg-white/5"
                     : "border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white"
             }`}
         >
@@ -207,9 +214,14 @@ function NavLink({ children }: { children: React.ReactNode }) {
     return (
         <a
             href="#"
-            className="font-clean cursor-pointer text-sm tracking-[0.08em] text-white/90 transition hover:text-[#d8bea5]"
+            className="group relative font-clean cursor-pointer text-sm tracking-[0.08em] text-white/85 transition"
         >
-            {children}
+            <span className="transition group-hover:text-[#d8bea5]">
+                {children}
+            </span>
+
+            {/* underline */}
+            <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#d8bea5] transition-all duration-300 group-hover:w-full" />
         </a>
     );
 }
@@ -218,17 +230,21 @@ function ImageCard({
                        src,
                        alt,
                        className = "",
+                       priority = false,
                    }: {
     src: string;
     alt: string;
     className?: string;
+    priority?: boolean;
 }) {
     return (
         <img
             src={src}
             alt={alt}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={priority ? "high" : "auto"}
             className={`h-full w-full object-cover ${className}`}
-            loading="lazy"
         />
     );
 }
@@ -299,6 +315,8 @@ export default function Home({
                     <img
                         src={selectedImage}
                         alt="Gallery preview"
+                        loading="eager"
+                        decoding="async"
                         className="max-h-[92vh] max-w-[92vw] object-contain shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                     />
@@ -316,14 +334,18 @@ export default function Home({
                 </div>
             ) : null}
 
-            <header className="sticky top-0 z-50 border-b border-white/10 bg-black text-white">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+            <header className="sticky top-0 z-50 border-b border-white/5 text-white relative bg-[url('/images/nail-house/cracked-black-painted-wall.jpg')] bg-cover bg-center">
+
+                {/* subtle overlay for readability */}
+                <div className="absolute inset-0 bg-black/45" />
+
+                <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
                     <div className="flex items-center">
-                        <BrandLogo className="h-20 w-auto object-contain" />
+                        <BrandLogo className="h-28 w-auto object-contain brightness-110 contrast-110" />
                     </div>
 
                     <nav className="hidden items-center gap-8 lg:flex">
-                        <NavLink>Milenko test stuff</NavLink>
+                        <NavLink>Home</NavLink>
                         <NavLink>Preise</NavLink>
                         <NavLink>Über uns</NavLink>
                         <NavLink>Galerie</NavLink>
@@ -333,7 +355,7 @@ export default function Home({
 
                     <div className="hidden items-center gap-6 lg:flex">
             <span className="font-clean text-sm tracking-[0.06em] text-white/70">
-              +43 (0) 676 5504044
+                +43 (0) 676 5504044
             </span>
                         <PrimaryButton dark>Terminbuchung</PrimaryButton>
                     </div>
@@ -341,35 +363,51 @@ export default function Home({
             </header>
 
             <main className="flex-1">
-                <section className="relative isolate overflow-hidden bg-black text-white">
-                    <div className="absolute inset-0">
-                        <img
-                            src={assets.heroBackground}
-                            alt="Beauty Corner hero background"
-                            className="h-full w-full object-cover opacity-60"
-                        />
-                        <div className="absolute inset-0 bg-black/35" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/25 to-black/45" />
-                    </div>
+                <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden">
+                    {/* Background */}
+                    <div
+                        className="absolute inset-0 bg-cover bg-no-repeat"
+                        style={{
+                            backgroundImage: "url('/images/nail-house/hero.jpg')",
+                            backgroundPosition: "center right",
+                        }}
+                    />
 
-                    <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center justify-center px-6 py-24 text-center lg:px-10">
-                        <div className="max-w-4xl">
-                            <p className="font-script text-5xl text-[#d8bea5] md:text-7xl">
-                                Dein Beauty Corner in
-                            </p>
+                    {/* overlays */}
+                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
 
-                            <h1 className="font-display mt-2 text-7xl uppercase leading-none tracking-[0.08em] text-white md:text-[8.5rem]">
-                                Graz
-                            </h1>
+                    {/* content */}
+                    <div className="relative z-10 flex h-full items-center">
+                        <div className="mx-auto max-w-7xl px-6 lg:px-10 flex justify-start">
+                            <div className="max-w-xl text-white text-left">
 
-                            <p className="font-clean mx-auto mt-8 max-w-2xl text-base leading-8 tracking-[0.01em] text-white/80 md:text-lg">
-                                Elegante Nageldesigns, modernes Studio-Ambiente und eine stilvolle
-                                Beauty-Experience für Kundinnen, die gepflegte Details und hochwertige
-                                Ergebnisse lieben.
-                            </p>
+                                <h1
+                                    className="text-5xl md:text-6xl font-semibold leading-tight"
+                                    style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+                                >
+                                    Beauty Corner
+                                </h1>
 
-                            <div className="mt-12 flex justify-center">
-                                <PrimaryButton dark>Jetzt online Termin buchen</PrimaryButton>
+                                <p className="mt-5 text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl leading-relaxed whitespace-nowrap md:whitespace-normal">
+                                    Professionelle Nagelpflege & hochwertige Beauty-Behandlungen in Graz
+                                </p>
+
+                                <div className="mt-10 flex flex-wrap gap-4">
+                                    <a
+                                        href="#booking"
+                                        className="rounded-full bg-white px-6 py-3 text-black font-medium hover:bg-gray-200 transition"
+                                    >
+                                        Termin buchen
+                                    </a>
+
+                                    <a
+                                        href="#services"
+                                        className="rounded-full border border-white px-6 py-3 text-white hover:bg-white hover:text-black transition"
+                                    >
+                                        Leistungen ansehen
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
