@@ -413,7 +413,7 @@ export default function Home({
                     </div>
                 </section>
 
-                <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+                <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28 bg-[#f3eee8]">
                     <SectionHeading
                         eyebrow="Leistungen"
                         title="Natürlich. Elegant. Gepflegt."
@@ -476,6 +476,86 @@ export default function Home({
                         </div>
 
                     </div>
+                </section>
+
+                <section className="bg-[#e9dfd6] py-24 border-t border-stone-200/60">
+
+                    {/* HEADER */}
+                    <SectionHeading
+                        eyebrow="Preise"
+                        title="Transparente Preise"
+                        description="Hochwertige Behandlungen mit klaren und fairen Preisen."
+                        align="center"
+                    />
+
+                    {/* CONTENT */}
+                    <div className="mt-12 max-w-3xl mx-auto px-6">
+
+                        <div className="bg-white rounded-3xl shadow-sm ring-1 ring-stone-200 divide-y">
+
+                            {[
+                                {
+                                    title: "Naturnagelverstärkung",
+                                    subtitle: "Natürlich verstärkte Nägel mit langlebigem Gel",
+                                    prices: ["Kurz — ab 45€", "Lang — ab 60€"]
+                                },
+                                {
+                                    title: "Gel-Modellage",
+                                    subtitle: "Verlängerung mit Gel für elegante Nägel",
+                                    prices: ["Kurz — ab 65€", "Lang — ab 75€"]
+                                },
+                                {
+                                    title: "Shellac",
+                                    subtitle: "",
+                                    prices: ["ab 35€"]
+                                },
+                                {
+                                    title: "Refill / Auffüllen",
+                                    subtitle: "",
+                                    prices: ["ab 60€"]
+                                },
+                                {
+                                    title: "Maniküre",
+                                    subtitle: "",
+                                    prices: ["inklusive"]
+                                }
+                            ].map((item, i) => (
+                                <div
+                                    key={i}
+                                    className="p-7 flex items-center justify-between gap-6 hover:bg-stone-50 transition"
+                                >
+
+                                    {/* LEFT */}
+                                    <div>
+                                        <h3 className="font-display text-xl">
+                                            {item.title}
+                                        </h3>
+
+                                        {item.subtitle && (
+                                            <p className="text-sm text-stone-500 mt-1">
+                                                {item.subtitle}
+                                            </p>
+                                        )}
+
+                                        <div className="mt-3 text-sm text-stone-600 space-y-1">
+                                            {item.prices.map((p, idx) => (
+                                                <div key={idx}>{p}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* BUTTON */}
+                                    <button className="cursor-pointer text-xs uppercase tracking-widest px-6 py-2 rounded-full border border-stone-300 bg-white hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all duration-300">
+                                        Buchen
+                                    </button>
+
+                                </div>
+                            ))}
+
+                        </div>
+
+                    </div>
+
                 </section>
 
                 <section className="bg-[#efe4da] py-20 lg:py-28">
