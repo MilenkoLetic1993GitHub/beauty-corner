@@ -413,85 +413,80 @@ export default function Home({
                     </div>
                 </section>
 
-                <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28 bg-[#f3eee8]">
-                    <SectionHeading
-                        eyebrow="Leistungen"
-                        title="Natürlich. Elegant. Gepflegt."
-                        description="Im Beauty Corner arbeite ich ausschließlich mit moderner Geltechnik – ganz ohne Acryl. Jede Behandlung wird individuell auf dich und deine Naturnägel abgestimmt."
-                        align="center"
-                    />
+                <section className="bg-white py-20 lg:py-28 border-t border-stone-200/40">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
-                    <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                        <SectionHeading
+                            eyebrow="Leistungen"
+                            title="Natürlich. Elegant. Gepflegt."
+                            description="Im Beauty Corner arbeite ich ausschließlich mit moderner Geltechnik – ganz ohne Acryl. Jede Behandlung wird individuell auf dich und deine Naturnägel abgestimmt."
+                            align="center"
+                        />
 
-                        {/* Service 1 */}
-                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
-                            <h3 className="font-display text-3xl">Naturnagelverstärkung</h3>
-                            <p className="mt-4 text-stone-600 leading-7">
-                                Stärkung deiner natürlichen Nägel mit hochwertigem Gel – für einen gepflegten und langlebigen Look.
-                            </p>
-                        </div>
+                        <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-                        {/* Service 2 */}
-                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
-                            <h3 className="font-display text-3xl">Gel-Modellage</h3>
-                            <p className="mt-4 text-stone-600 leading-7">
-                                Verlängerung mit Gel für elegante, stabile Nägel – individuell geformt und perfekt angepasst.
-                            </p>
-                        </div>
+                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                                <h3 className="font-display text-3xl">Naturnagelverstärkung</h3>
+                                <p className="mt-4 text-stone-600 leading-7">
+                                    Stärkung deiner natürlichen Nägel mit hochwertigem Gel – für einen gepflegten und langlebigen Look.
+                                </p>
+                            </div>
 
-                        {/* Service 3 */}
-                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
-                            <h3 className="font-display text-3xl">Refill / Auffüllen</h3>
-                            <p className="mt-4 text-stone-600 leading-7">
-                                Regelmäßiges Auffüllen für dauerhaft schöne Nägel – sauber, präzise und natürlich wirkend.
-                            </p>
-                        </div>
+                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                                <h3 className="font-display text-3xl">Gel-Modellage</h3>
+                                <p className="mt-4 text-stone-600 leading-7">
+                                    Verlängerung mit Gel für elegante, stabile Nägel – individuell geformt und perfekt angepasst.
+                                </p>
+                            </div>
 
-                        {/* Service 4 */}
-                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
-                            <h3 className="font-display text-3xl">Maniküre</h3>
-                            <p className="mt-4 text-stone-600 leading-7">
-                                Klassische Pflege für gesunde, gepflegte Hände – die perfekte Basis für jedes Design.
-                            </p>
-                        </div>
+                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                                <h3 className="font-display text-3xl">Refill / Auffüllen</h3>
+                                <p className="mt-4 text-stone-600 leading-7">
+                                    Regelmäßiges Auffüllen für dauerhaft schöne Nägel – sauber, präzise und natürlich wirkend.
+                                </p>
+                            </div>
 
-                        {/* Service 5 */}
-                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
-                            <h3 className="font-display text-3xl">Nail Art & Designs</h3>
-                            <p className="mt-4 text-stone-600 leading-7">
-                                Individuelle Designs von elegant bis kreativ – abgestimmt auf deinen Stil und Anlass.
-                            </p>
-                        </div>
+                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                                <h3 className="font-display text-3xl">Maniküre</h3>
+                                <p className="mt-4 text-stone-600 leading-7">
+                                    Klassische Pflege für gesunde, gepflegte Hände – die perfekte Basis für jedes Design.
+                                </p>
+                            </div>
 
-                        {/* Service 6 (Differentiator block) */}
-                        <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-stone-200">
-                            <h3 className="font-display text-3xl">Warum Beauty Corner?</h3>
+                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                                <h3 className="font-display text-3xl">Nail Art & Designs</h3>
+                                <p className="mt-4 text-stone-600 leading-7">
+                                    Individuelle Designs von elegant bis kreativ – abgestimmt auf deinen Stil und Anlass.
+                                </p>
+                            </div>
 
-                            <ul className="mt-6 space-y-3 text-stone-600">
-                                <li>✓ HEMA-freie Produkte</li>
-                                <li>✓ Schonende Geltechnik ohne Acryl</li>
-                                <li>✓ Höchste Hygiene-Standards</li>
-                                <li>✓ Individuelle Beratung</li>
-                            </ul>
+                            <div className="bg-[#f5f2ee] p-8 rounded-[2rem] shadow-sm border border-stone-200 hover:shadow-md transition duration-300">
+                                <h3 className="font-display text-3xl">Warum Beauty Corner?</h3>
+
+                                <ul className="mt-6 space-y-3 text-stone-600">
+                                    <li>✓ HEMA-freie Produkte</li>
+                                    <li>✓ Schonende Geltechnik ohne Acryl</li>
+                                    <li>✓ Höchste Hygiene-Standards</li>
+                                    <li>✓ Individuelle Beratung</li>
+                                </ul>
+                            </div>
+
                         </div>
 
                     </div>
                 </section>
 
-                <section className="bg-[#e9dfd6] py-24 border-t border-stone-200/60">
+                <section className="bg-[#f4eee8] py-24 border-t border-stone-300/40">
+                    <div className="max-w-3xl mx-auto px-6">
 
-                    {/* HEADER */}
-                    <SectionHeading
-                        eyebrow="Preise"
-                        title="Transparente Preise"
-                        description="Hochwertige Behandlungen mit klaren und fairen Preisen."
-                        align="center"
-                    />
+                        <SectionHeading
+                            eyebrow="Preise"
+                            title="Transparente Preise"
+                            description="Hochwertige Behandlungen mit klaren und fairen Preisen."
+                            align="center"
+                        />
 
-                    {/* CONTENT */}
-                    <div className="mt-12 max-w-3xl mx-auto px-6">
-
-                        <div className="bg-white rounded-3xl shadow-sm ring-1 ring-stone-200 divide-y">
+                        <div className="mt-12 bg-white shadow-md rounded-3xl ring-1 ring-stone-200 divide-y">
 
                             {[
                                 {
@@ -525,7 +520,6 @@ export default function Home({
                                     className="p-7 flex items-center justify-between gap-6 hover:bg-stone-50 transition"
                                 >
 
-                                    {/* LEFT */}
                                     <div>
                                         <h3 className="font-display text-xl">
                                             {item.title}
@@ -544,7 +538,6 @@ export default function Home({
                                         </div>
                                     </div>
 
-                                    {/* BUTTON */}
                                     <button className="cursor-pointer text-xs uppercase tracking-widest px-6 py-2 rounded-full border border-stone-300 bg-white hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all duration-300">
                                         Buchen
                                     </button>
@@ -555,178 +548,171 @@ export default function Home({
                         </div>
 
                     </div>
-
                 </section>
 
-                <section className="bg-[#efe4da] py-20 lg:py-28">
-                    <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
-                        <div className="overflow-hidden shadow-xl">
-                            <ImageCard src={assets.aboutImage} alt="Beauty Corner portrait" className="max-h-[760px]" />
+                <section className="bg-white py-24 border-t border-stone-200/40">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+
+                        {/* IMAGE */}
+                        <div className="relative">
+                            <img
+                                src="/images/nail-house/profile_photo.png"
+                                alt="Beauty Corner"
+                                className="w-full h-auto rounded-[2rem] shadow-md object-cover"
+                            />
                         </div>
 
-                        <div className="space-y-8">
-                            <SectionHeading
-                                eyebrow="Über uns"
-                                title="Persönlich, stilvoll und mit viel Liebe zum Detail"
-                                description="Ein modernes Beauty-Studio in Graz mit Fokus auf saubere Arbeit, schöne Formen und elegante Ergebnisse. Hier treffen ruhige Atmosphäre und sorgfältiges Nageldesign aufeinander."
-                            />
+                        {/* CONTENT */}
+                        <div className="max-w-xl">
 
-                            <p className="font-clean max-w-2xl text-base leading-8 text-stone-600">
-                                Von soft nude und klassischem French bis zu kreativen saisonalen Looks:
-                                Jede Behandlung soll nicht nur schön aussehen, sondern sich auch hochwertig anfühlen.
+      <span className="text-sm tracking-[0.2em] uppercase text-stone-400">
+        Über mich
+      </span>
+
+                            <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight">
+                                Schönheit beginnt mit gepflegten Details
+                            </h2>
+
+                            <p className="mt-6 text-stone-600 leading-7">
+                                Mein Name ist Darja und ich habe mich auf hochwertige Nagelpflege
+                                und moderne Geltechniken spezialisiert. Mein Fokus liegt auf
+                                natürlichen, eleganten Ergebnissen, die perfekt zu deinem Stil passen.
                             </p>
 
-                            <PrimaryButton>Mehr entdecken</PrimaryButton>
+                            <p className="mt-4 text-stone-600 leading-7">
+                                In meinem Studio arbeite ich ausschließlich mit sorgfältig ausgewählten,
+                                HEMA-freien Produkten und lege größten Wert auf Hygiene,
+                                Präzision und persönliche Beratung.
+                            </p>
+
+                            <div className="mt-8">
+                                <a
+                                    href="#booking"
+                                    className="inline-block rounded-full bg-stone-900 px-8 py-3 text-white text-sm tracking-wide hover:bg-black transition"
+                                >
+                                    Termin buchen
+                                </a>
+                            </div>
+
                         </div>
+
                     </div>
                 </section>
 
-                <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-                    <SectionHeading
-                        eyebrow="Galerie"
-                        title="Ausgewählte Arbeiten aus dem Studio"
-                        description="Natürliche Styles, klassische French Looks und kreative Designs – ausgewählt aus Ihren echten Arbeiten für einen hochwertigen, modernen Auftritt."
-                        align="center"
-                    />
-
-                    <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-                        {galleryImages.map((image, index) => (
-                            <button
-                                key={image}
-                                type="button"
-                                className="group relative block overflow-hidden bg-transparent text-left"
-                                onClick={() => setSelectedImageIndex(index)}
-                            >
-                                <ImageCard
-                                    src={image}
-                                    alt={`Nail work ${index + 1}`}
-                                    className="aspect-[4/5] w-full transition duration-500 group-hover:scale-[1.03]"
-                                />
-                                <div className="pointer-events-none absolute inset-0 ring-1 ring-black/6" />
-                            </button>
-                        ))}
-                    </div>
-                </section>
-
-                <section className="bg-black py-20 text-white lg:py-28">
+                <section className="bg-[#f6f1eb] py-20 lg:py-28 border-t border-stone-200/40">
                     <div className="mx-auto max-w-7xl px-6 lg:px-10">
-                        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                            <div className="space-y-8">
+
+                        <SectionHeading
+                            eyebrow="Galerie"
+                            title="Ausgewählte Arbeiten aus dem Studio"
+                            description="Natürliche Styles, klassische French Looks und kreative Designs – ausgewählt aus Ihren echten Arbeiten für einen hochwertigen, modernen Auftritt."
+                            align="center"
+                        />
+
+                        <div className="mt-14 grid gap-6 md:gap-8 md:grid-cols-2 xl:grid-cols-4">
+                            {galleryImages.map((image, index) => (
+                                <button
+                                    key={image}
+                                    type="button"
+                                    className="group relative block overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition duration-300"
+                                    onClick={() => setSelectedImageIndex(index)}
+                                >
+                                    <ImageCard
+                                        src={image}
+                                        alt={`Nail work ${index + 1}`}
+                                        className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
+                                    />
+
+                                    {/* overlay */}
+                                    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
+
+                                    {/* subtle border */}
+                                    <div className="pointer-events-none absolute inset-0 ring-1 ring-black/6 rounded-2xl" />
+                                </button>
+                            ))}
+                        </div>
+
+                    </div>
+                </section>
+
+                <section className="bg-white py-20 lg:py-28 border-t border-stone-200/40">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-10">
+
+                        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+
+                            {/* TEXT */}
+                            <div className="space-y-8 max-w-xl">
                                 <SectionHeading
                                     eyebrow="Studio"
                                     title="Eine ruhige, elegante Atmosphäre mitten in Graz"
                                     description="Die echten Interior-Bilder zeigen den Stil des Studios: hell, sauber, hochwertig und einladend. Genau dieser Eindruck soll die Website transportieren."
                                 />
-                                <PrimaryButton dark>Termin anfragen</PrimaryButton>
+
+                                <PrimaryButton>
+                                    Termin anfragen
+                                </PrimaryButton>
                             </div>
 
+                            {/* IMAGES */}
                             <div className="grid gap-6 md:grid-cols-2">
-                                <div className="overflow-hidden bg-white/5">
-                                    <ImageCard src={assets.studioImage1} alt="Studio waiting area" className="aspect-[4/5]" />
-                                </div>
-                                <div className="overflow-hidden bg-white/5">
-                                    <ImageCard src={assets.studioImage2} alt="Studio mirror" className="aspect-[4/5]" />
-                                </div>
-                                <div className="overflow-hidden bg-white/5">
-                                    <ImageCard src={assets.studioImage3} alt="Studio details" className="aspect-[4/5]" />
-                                </div>
-                                <div className="overflow-hidden bg-white/5">
-                                    <ImageCard src={assets.studioImage4} alt="Studio coffee corner" className="aspect-[4/5]" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
-                <section className="bg-[#efe4da] py-20 lg:py-28">
-                    <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
-                        <div className="space-y-8">
-                            <SectionHeading
-                                eyebrow="Öffnungszeiten"
-                                title="Schönheit mit Ruhe, Sorgfalt und Stil"
-                                description="Genießen Sie ein modernes Studioerlebnis in eleganter Atmosphäre. Kleine Details, hochwertige Produkte und ein ruhiges Ambiente machen jeden Termin besonders."
-                            />
-                            <div className="grid gap-6 sm:grid-cols-2">
-                                <div className="rounded-[2rem] bg-white p-8 shadow-sm">
-                                    <p className="font-display text-3xl">Öffnungszeiten</p>
-                                    <p className="mt-4 leading-8 text-stone-600">Di.–Fr. 09:00–19:00 Uhr</p>
-                                </div>
-
-                                <div className="rounded-[2rem] bg-white p-8 shadow-sm">
-                                    <p className="font-display text-3xl">Standort</p>
-                                    <p className="mt-4 leading-8 text-stone-600">Graz, stilvolles Beauty Studio</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-stone-200">
-                            <h3 className="font-display text-4xl">Beliebte Behandlungen</h3>
-                            <div className="mt-6 space-y-6">
-                                {priceCategories.flatMap((category) => category.items ?? []).map((item) => (
+                                {[assets.studioImage1, assets.studioImage2, assets.studioImage3, assets.studioImage4].map((img, i) => (
                                     <div
-                                        key={item.id}
-                                        className="flex items-start justify-between gap-6 border-b border-stone-200 pb-4 last:border-b-0 last:pb-0"
+                                        key={i}
+                                        className="group overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition duration-300"
                                     >
-                                        <div>
-                                            <p className="font-clean font-medium tracking-[0.01em]">{item.name}</p>
-                                            <p className="font-clean text-sm text-stone-500">
-                                                {item.duration_minutes ? `${item.duration_minutes} min` : ""}
-                                                {item.description ? ` • ${item.description}` : ""}
-                                            </p>
-                                        </div>
-                                        <div className="font-clean whitespace-nowrap text-lg font-semibold">
-                                            {formatPrice(item.price)}
-                                        </div>
+                                        <ImageCard
+                                            src={img}
+                                            alt="Studio"
+                                            className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
+                                        />
+
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
                                     </div>
                                 ))}
+
                             </div>
+
                         </div>
+
                     </div>
                 </section>
             </main>
 
-            <footer className="relative overflow-hidden bg-black py-20 text-white">
-                <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
-                    <div className="absolute left-1/2 top-8 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-white/10" />
-                    <div className="absolute left-1/2 top-20 h-[420px] w-[420px] -translate-x-1/2 rounded-full border border-white/10" />
-                    <div className="absolute left-1/2 top-32 h-[320px] w-[320px] -translate-x-1/2 rounded-full border border-white/10" />
-                </div>
+            <footer className="relative overflow-hidden py-20 text-white bg-[url('/images/nail-house/cracked-black-painted-wall.jpg')] bg-cover bg-center">
 
-                <div className="relative w-full px-6 lg:px-10">
-                    <div className="flex flex-col items-center text-center">
-                        <div>
-                            <BrandLogo className="mx-auto h-28 w-auto object-contain" />
-                        </div>
+                {/* SAME overlay as navbar */}
+                <div className="absolute inset-0 bg-black/45" />
 
-                        <p className="font-clean mt-8 max-w-2xl text-[17px] leading-8 text-white/70">
-                            Verwöhnen Sie Ihre Nägel im Beauty Corner Studio – Schönheit beginnt
-                            mit perfekt gepflegten Händen und fabelhaften Designs.
-                        </p>
+                <div className="relative mx-auto max-w-7xl px-6 lg:px-10 text-center">
 
-                        <div className="font-clean mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-[14px] text-white/75">
-                            <a href="#" className="cursor-pointer transition hover:text-[#d8bea5]">FAQ</a>
-                            <a href="#" className="cursor-pointer transition hover:text-[#d8bea5]">Kontakt</a>
-                            <a href="#" className="cursor-pointer transition hover:text-[#d8bea5]">Impressum</a>
-                            <a href="#" className="cursor-pointer transition hover:text-[#d8bea5]">Datenschutz</a>
-                            <a href="#" className="cursor-pointer transition hover:text-[#d8bea5]">Cookie-Richtlinie (EU)</a>
-                            <a href="#" className="cursor-pointer transition hover:text-[#d8bea5]">Instagram</a>
-                        </div>
+                    <BrandLogo className="mx-auto h-24 w-auto object-contain" />
 
-                        <div className="mt-12 flex items-center gap-8 text-[#d8bea5]">
-                            <a href="#" aria-label="Facebook" className="cursor-pointer text-xl transition hover:scale-110 hover:text-white">
-                                f
-                            </a>
-                            <a href="#" aria-label="Instagram" className="cursor-pointer text-xl transition hover:scale-110 hover:text-white">
-                                ◎
-                            </a>
-                        </div>
+                    <p className="mt-8 max-w-xl mx-auto text-white/70 leading-7">
+                        Verwöhnen Sie Ihre Nägel im Beauty Corner Studio – Schönheit beginnt
+                        mit perfekt gepflegten Händen und eleganten Designs.
+                    </p>
 
-                        <div className="relative left-1/2 mt-14 h-px w-screen max-w-none -translate-x-1/2 bg-white/10" />
-
-                        <p className="font-clean mt-8 text-sm tracking-[0.06em] text-white/55">
-                            © All Rights Reserved - 2025
-                        </p>
+                    <div className="mt-10">
+                        <a
+                            href="#booking"
+                            className="inline-block rounded-full bg-white px-8 py-3 text-black text-sm tracking-wide hover:bg-gray-200 transition"
+                        >
+                            Termin buchen
+                        </a>
                     </div>
+
+                    <div className="mt-10 flex justify-center gap-8 text-[#d8bea5]">
+                        <a href="#" className="text-xl hover:scale-110 transition hover:text-white">f</a>
+                        <a href="#" className="text-xl hover:scale-110 transition hover:text-white">◎</a>
+                    </div>
+
+                    <div className="mt-12 h-px w-full bg-white/10" />
+
+                    <p className="mt-6 text-sm text-white/50">
+                        © {new Date().getFullYear()} Beauty Corner. All rights reserved.
+                    </p>
+
                 </div>
             </footer>
         </div>
