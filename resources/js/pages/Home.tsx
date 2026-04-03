@@ -413,19 +413,68 @@ export default function Home({
                     </div>
                 </section>
 
-                <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
-                    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-                        {services.map((service) => (
-                            <div key={service.id} className="rounded-[2rem] bg-[#efe4da] p-8 text-center shadow-sm">
-                                <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border border-stone-300 bg-[#f7f1ec] text-2xl">
-                                    ✦
-                                </div>
-                                <h3 className="font-display text-4xl leading-none">{service.title}</h3>
-                                <p className="font-clean mt-4 text-base leading-7 text-stone-600">
-                                    {service.short_description}
-                                </p>
-                            </div>
-                        ))}
+                <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+                    <SectionHeading
+                        eyebrow="Leistungen"
+                        title="Natürlich. Elegant. Gepflegt."
+                        description="Im Beauty Corner arbeite ich ausschließlich mit moderner Geltechnik – ganz ohne Acryl. Jede Behandlung wird individuell auf dich und deine Naturnägel abgestimmt."
+                        align="center"
+                    />
+
+                    <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+                        {/* Service 1 */}
+                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
+                            <h3 className="font-display text-3xl">Naturnagelverstärkung</h3>
+                            <p className="mt-4 text-stone-600 leading-7">
+                                Stärkung deiner natürlichen Nägel mit hochwertigem Gel – für einen gepflegten und langlebigen Look.
+                            </p>
+                        </div>
+
+                        {/* Service 2 */}
+                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
+                            <h3 className="font-display text-3xl">Gel-Modellage</h3>
+                            <p className="mt-4 text-stone-600 leading-7">
+                                Verlängerung mit Gel für elegante, stabile Nägel – individuell geformt und perfekt angepasst.
+                            </p>
+                        </div>
+
+                        {/* Service 3 */}
+                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
+                            <h3 className="font-display text-3xl">Refill / Auffüllen</h3>
+                            <p className="mt-4 text-stone-600 leading-7">
+                                Regelmäßiges Auffüllen für dauerhaft schöne Nägel – sauber, präzise und natürlich wirkend.
+                            </p>
+                        </div>
+
+                        {/* Service 4 */}
+                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
+                            <h3 className="font-display text-3xl">Maniküre</h3>
+                            <p className="mt-4 text-stone-600 leading-7">
+                                Klassische Pflege für gesunde, gepflegte Hände – die perfekte Basis für jedes Design.
+                            </p>
+                        </div>
+
+                        {/* Service 5 */}
+                        <div className="bg-[#efe4da] p-8 rounded-[2rem] shadow-sm">
+                            <h3 className="font-display text-3xl">Nail Art & Designs</h3>
+                            <p className="mt-4 text-stone-600 leading-7">
+                                Individuelle Designs von elegant bis kreativ – abgestimmt auf deinen Stil und Anlass.
+                            </p>
+                        </div>
+
+                        {/* Service 6 (Differentiator block) */}
+                        <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-stone-200">
+                            <h3 className="font-display text-3xl">Warum Beauty Corner?</h3>
+
+                            <ul className="mt-6 space-y-3 text-stone-600">
+                                <li>✓ HEMA-freie Produkte</li>
+                                <li>✓ Schonende Geltechnik ohne Acryl</li>
+                                <li>✓ Höchste Hygiene-Standards</li>
+                                <li>✓ Individuelle Beratung</li>
+                            </ul>
+                        </div>
+
                     </div>
                 </section>
 
