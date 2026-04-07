@@ -214,6 +214,7 @@ function ImageCard({
 export default function Home() {
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
     const [showAllGalleryImages, setShowAllGalleryImages] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const visibleGalleryImages = useMemo(() => {
         if (showAllGalleryImages) {
@@ -337,6 +338,12 @@ export default function Home() {
                     </div>
 
                     <nav className="hidden items-center gap-8 lg:flex">
+                        <button
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="lg:hidden text-2xl text-white"
+                        >
+                            ☰
+                        </button>
                         <NavLink href="#home">Home</NavLink>
                         <NavLink href="#services">Leistungen</NavLink>
                         <NavLink href="#prices">Preise</NavLink>
@@ -355,6 +362,37 @@ export default function Home() {
                         </PrimaryButton>
                     </div>
                 </div>
+                {mobileMenuOpen && (
+                    <div className="fixed inset-0 z-[100]">
+                        {/* backdrop */}
+                        <div
+                            className="absolute inset-0 bg-black/70"
+                            onClick={() => setMobileMenuOpen(false)}
+                        />
+
+                        {/* menu panel */}
+                        <div className="absolute top-0 right-0 h-full w-[80%] max-w-sm bg-black text-white p-8">
+                            <div className="flex justify-end mb-8">
+                                <button
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-3xl"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+
+                            <div className="flex flex-col gap-6 text-lg">
+                                <a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a>
+                                <a href="#services" onClick={() => setMobileMenuOpen(false)}>Leistungen</a>
+                                <a href="#prices" onClick={() => setMobileMenuOpen(false)}>Preise</a>
+                                <a href="#about" onClick={() => setMobileMenuOpen(false)}>Über mich</a>
+                                <a href="#gallery" onClick={() => setMobileMenuOpen(false)}>Galerie</a>
+                                <a href="#studio" onClick={() => setMobileMenuOpen(false)}>Studio</a>
+                                <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Kontakt</a>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </header>
 
             <main className="flex-1">
