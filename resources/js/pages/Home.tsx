@@ -28,10 +28,16 @@ const galleryImages = [
     `/images/gallery/gallery_15.webp`,
 ];
 
+const bookingHref = "about:blank";
+
 function FontStyles() {
     return (
         <style>{`
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+      html {
+        scroll-behavior: smooth;
+      }
 
       .font-display {
         font-family: 'Cormorant Garamond', serif;
@@ -44,6 +50,10 @@ function FontStyles() {
       .font-clean {
         font-family: 'Montserrat', sans-serif;
       }
+
+      .scroll-offset {
+        scroll-margin-top: 120px;
+      }
     `}</style>
     );
 }
@@ -51,8 +61,8 @@ function FontStyles() {
 function HeadAssets() {
     useEffect(() => {
         if (typeof document === "undefined") {
-return;
-}
+            return;
+        }
 
         document.title = "Beauty Corner";
 
@@ -118,10 +128,31 @@ function SectionHeading({
 function PrimaryButton({
                            children,
                            dark = false,
+                           href,
+                           newTab = false,
                        }: {
     children: React.ReactNode;
     dark?: boolean;
+    href?: string;
+    newTab?: boolean;
 }) {
+    if (href) {
+        return (
+            <a
+                href={href}
+                target={newTab ? "_blank" : undefined}
+                rel={newTab ? "noopener noreferrer" : undefined}
+                className={`font-clean inline-block rounded-none border px-8 py-4 text-[12px] uppercase tracking-[0.28em] transition ${
+                    dark
+                        ? "border-white/30 text-white hover:border-[#d8bea5] hover:text-[#d8bea5] hover:bg-white/5"
+                        : "border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white"
+                }`}
+            >
+                {children}
+            </a>
+        );
+    }
+
     return (
         <button
             className={`font-clean rounded-none border px-8 py-4 text-[12px] uppercase tracking-[0.28em] transition ${
@@ -135,17 +166,22 @@ function PrimaryButton({
     );
 }
 
-function NavLink({ children }: { children: React.ReactNode }) {
+function NavLink({
+                     children,
+                     href,
+                 }: {
+    children: React.ReactNode;
+    href: string;
+}) {
     return (
         <a
-            href="#"
+            href={href}
             className="group relative font-clean cursor-pointer text-sm tracking-[0.08em] text-white/85 transition"
         >
             <span className="transition group-hover:text-[#d8bea5]">
                 {children}
             </span>
 
-            {/* underline */}
             <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-[#d8bea5] transition-all duration-300 group-hover:w-full" />
         </a>
     );
@@ -179,16 +215,16 @@ export default function Home() {
 
     const selectedImage = useMemo(() => {
         if (selectedImageIndex === null) {
-return null;
-}
+            return null;
+        }
 
         return galleryImages[selectedImageIndex] ?? null;
     }, [selectedImageIndex]);
 
     const showPrevImage = useCallback(() => {
         if (selectedImageIndex === null) {
-return
-}
+            return;
+        }
 
         setSelectedImageIndex(
             (selectedImageIndex - 1 + galleryImages.length) % galleryImages.length
@@ -197,8 +233,8 @@ return
 
     const showNextImage = useCallback(() => {
         if (selectedImageIndex === null) {
-return;
-}
+            return;
+        }
 
         setSelectedImageIndex(
             (selectedImageIndex + 1) % galleryImages.length
@@ -208,20 +244,20 @@ return;
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (selectedImageIndex === null) {
-return;
-}
+                return;
+            }
 
             if (event.key === "Escape") {
-setSelectedImageIndex(null);
-}
+                setSelectedImageIndex(null);
+            }
 
             if (event.key === "ArrowLeft") {
-showPrevImage();
-}
+                showPrevImage();
+            }
 
             if (event.key === "ArrowRight") {
-showNextImage();
-}
+                showNextImage();
+            }
         };
 
         window.addEventListener("keydown", handleKeyDown);
@@ -281,36 +317,38 @@ showNextImage();
             ) : null}
 
             <header className="sticky top-0 z-50 border-b border-white/5 text-white relative bg-[url('/images/layout/layout.webp')] bg-cover bg-center">
-
-                {/* subtle overlay for readability */}
                 <div className="absolute inset-0 bg-black/45" />
 
                 <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
                     <div className="flex items-center">
-                        <BrandLogo className="h-28 w-auto object-contain brightness-110 contrast-110" />
+                        <a href="#home" aria-label="Go to home">
+                            <BrandLogo className="h-28 w-auto object-contain brightness-110 contrast-110" />
+                        </a>
                     </div>
 
                     <nav className="hidden items-center gap-8 lg:flex">
-                        <NavLink>Home</NavLink>
-                        <NavLink>Preise</NavLink>
-                        <NavLink>Über uns</NavLink>
-                        <NavLink>Galerie</NavLink>
-                        <NavLink>Kontakt</NavLink>
-                        <NavLink>Kunden Login</NavLink>
+                        <NavLink href="#home">Home</NavLink>
+                        <NavLink href="#services">Leistungen</NavLink>
+                        <NavLink href="#prices">Preise</NavLink>
+                        <NavLink href="#about">Über mich</NavLink>
+                        <NavLink href="#gallery">Galerie</NavLink>
+                        <NavLink href="#studio">Studio</NavLink>
+                        <NavLink href="#contact">Kontakt</NavLink>
                     </nav>
 
                     <div className="hidden items-center gap-6 lg:flex">
-            <span className="font-clean text-sm tracking-[0.06em] text-white/70">
-                +43 (0) 676 5504044
-            </span>
-                        <PrimaryButton dark>Terminbuchung</PrimaryButton>
+                        <span className="font-clean text-sm tracking-[0.06em] text-white/70">
+                            +43 (0) 676 5504044
+                        </span>
+                        <PrimaryButton dark href={bookingHref} newTab>
+                            Terminbuchung
+                        </PrimaryButton>
                     </div>
                 </div>
             </header>
 
             <main className="flex-1">
-                <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden">
-                    {/* Background */}
+                <section id="home" className="scroll-offset relative h-[90vh] min-h-[600px] w-full overflow-hidden">
                     <div
                         className="absolute inset-0 bg-cover bg-no-repeat"
                         style={{
@@ -319,37 +357,36 @@ showNextImage();
                         }}
                     />
 
-                    {/* overlays */}
                     <div className="absolute inset-0 bg-black/50" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
 
-                    {/* content */}
                     <div className="relative z-10 flex h-full items-center">
-                        <div className="mx-auto max-w-7xl px-6 lg:px-10 flex justify-start">
-                            <div className="max-w-xl text-white text-left">
-
+                        <div className="mx-auto flex max-w-7xl justify-start px-6 lg:px-10">
+                            <div className="max-w-xl text-left text-white">
                                 <h1
-                                    className="text-5xl md:text-6xl font-semibold leading-tight"
-                                    style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+                                    className="text-5xl font-semibold leading-tight md:text-6xl"
+                                    style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}
                                 >
                                     Beauty Corner
                                 </h1>
 
-                                <p className="mt-5 text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl leading-relaxed whitespace-nowrap md:whitespace-normal">
+                                <p className="mt-5 max-w-2xl whitespace-nowrap text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl md:whitespace-normal">
                                     Professionelle Nagelpflege & hochwertige Beauty-Behandlungen in Graz
                                 </p>
 
                                 <div className="mt-10 flex flex-wrap gap-4">
                                     <a
-                                        href=""
-                                        className="rounded-full bg-white px-6 py-3 text-black font-medium hover:bg-gray-200 transition"
+                                        href={bookingHref}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-gray-200"
                                     >
                                         Termin buchen
                                     </a>
 
                                     <a
-                                        href=""
-                                        className="rounded-full border border-white px-6 py-3 text-white hover:bg-white hover:text-black transition"
+                                        href="#services"
+                                        className="rounded-full border border-white px-6 py-3 text-white transition hover:bg-white hover:text-black"
                                     >
                                         Leistungen ansehen
                                     </a>
@@ -359,9 +396,8 @@ showNextImage();
                     </div>
                 </section>
 
-                <section className="bg-white py-20 lg:py-28 border-t border-stone-200/40">
+                <section id="services" className="scroll-offset bg-white py-20 lg:py-28 border-t border-stone-200/40">
                     <div className="mx-auto max-w-7xl px-6 lg:px-10">
-
                         <SectionHeading
                             eyebrow="Leistungen"
                             title="Natürlich. Elegant. Gepflegt."
@@ -370,43 +406,42 @@ showNextImage();
                         />
 
                         <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-
-                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                            <div className="rounded-[2rem] bg-[#faf8f6] p-8 shadow-sm transition duration-300 hover:shadow-md">
                                 <h3 className="font-display text-3xl">Naturnagelverstärkung</h3>
-                                <p className="mt-4 text-stone-600 leading-7">
+                                <p className="mt-4 leading-7 text-stone-600">
                                     Stärkung deiner natürlichen Nägel mit hochwertigem Gel – für einen gepflegten und langlebigen Look.
                                 </p>
                             </div>
 
-                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                            <div className="rounded-[2rem] bg-[#faf8f6] p-8 shadow-sm transition duration-300 hover:shadow-md">
                                 <h3 className="font-display text-3xl">Gel-Modellage</h3>
-                                <p className="mt-4 text-stone-600 leading-7">
+                                <p className="mt-4 leading-7 text-stone-600">
                                     Verlängerung mit Gel für elegante, stabile Nägel – individuell geformt und perfekt angepasst.
                                 </p>
                             </div>
 
-                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                            <div className="rounded-[2rem] bg-[#faf8f6] p-8 shadow-sm transition duration-300 hover:shadow-md">
                                 <h3 className="font-display text-3xl">Refill / Auffüllen</h3>
-                                <p className="mt-4 text-stone-600 leading-7">
+                                <p className="mt-4 leading-7 text-stone-600">
                                     Regelmäßiges Auffüllen für dauerhaft schöne Nägel – sauber, präzise und natürlich wirkend.
                                 </p>
                             </div>
 
-                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                            <div className="rounded-[2rem] bg-[#faf8f6] p-8 shadow-sm transition duration-300 hover:shadow-md">
                                 <h3 className="font-display text-3xl">Maniküre</h3>
-                                <p className="mt-4 text-stone-600 leading-7">
+                                <p className="mt-4 leading-7 text-stone-600">
                                     Klassische Pflege für gesunde, gepflegte Hände – die perfekte Basis für jedes Design.
                                 </p>
                             </div>
 
-                            <div className="bg-[#faf8f6] p-8 rounded-[2rem] shadow-sm hover:shadow-md transition duration-300">
+                            <div className="rounded-[2rem] bg-[#faf8f6] p-8 shadow-sm transition duration-300 hover:shadow-md">
                                 <h3 className="font-display text-3xl">Nail Art & Designs</h3>
-                                <p className="mt-4 text-stone-600 leading-7">
+                                <p className="mt-4 leading-7 text-stone-600">
                                     Individuelle Designs von elegant bis kreativ – abgestimmt auf deinen Stil und Anlass.
                                 </p>
                             </div>
 
-                            <div className="bg-[#f5f2ee] p-8 rounded-[2rem] shadow-sm border border-stone-200 hover:shadow-md transition duration-300">
+                            <div className="rounded-[2rem] border border-stone-200 bg-[#f5f2ee] p-8 shadow-sm transition duration-300 hover:shadow-md">
                                 <h3 className="font-display text-3xl">Warum Beauty Corner?</h3>
 
                                 <ul className="mt-6 space-y-3 text-stone-600">
@@ -416,15 +451,12 @@ showNextImage();
                                     <li>✓ Individuelle Beratung</li>
                                 </ul>
                             </div>
-
                         </div>
-
                     </div>
                 </section>
 
-                <section className="bg-[#f4eee8] py-24 border-t border-stone-300/40">
-                    <div className="max-w-3xl mx-auto px-6">
-
+                <section id="prices" className="scroll-offset bg-[#f4eee8] py-24 border-t border-stone-300/40">
+                    <div className="mx-auto max-w-3xl px-6">
                         <SectionHeading
                             eyebrow="Preise"
                             title="Transparente Preise"
@@ -432,8 +464,7 @@ showNextImage();
                             align="center"
                         />
 
-                        <div className="mt-12 bg-white shadow-md rounded-3xl ring-1 ring-stone-200 divide-y">
-
+                        <div className="mt-12 divide-y rounded-3xl bg-white shadow-md ring-1 ring-stone-200">
                             {[
                                 {
                                     title: "Naturnagelverstärkung",
@@ -463,69 +494,66 @@ showNextImage();
                             ].map((item, i) => (
                                 <div
                                     key={i}
-                                    className="p-7 flex items-center justify-between gap-6 hover:bg-stone-50 transition"
+                                    className="flex items-center justify-between gap-6 p-7 transition hover:bg-stone-50"
                                 >
-
                                     <div>
                                         <h3 className="font-display text-xl">
                                             {item.title}
                                         </h3>
 
-                                        {item.subtitle && (
-                                            <p className="text-sm text-stone-500 mt-1">
+                                        {item.subtitle ? (
+                                            <p className="mt-1 text-sm text-stone-500">
                                                 {item.subtitle}
                                             </p>
-                                        )}
+                                        ) : null}
 
-                                        <div className="mt-3 text-sm text-stone-600 space-y-1">
+                                        <div className="mt-3 space-y-1 text-sm text-stone-600">
                                             {item.prices.map((p, idx) => (
                                                 <div key={idx}>{p}</div>
                                             ))}
                                         </div>
                                     </div>
 
-                                    <button className="cursor-pointer text-xs uppercase tracking-widest px-6 py-2 rounded-full border border-stone-300 bg-white hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all duration-300">
+                                    <a
+                                        href={bookingHref}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="cursor-pointer rounded-full border border-stone-300 bg-white px-6 py-2 text-xs uppercase tracking-widest transition-all duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+                                    >
                                         Buchen
-                                    </button>
-
+                                    </a>
                                 </div>
                             ))}
-
                         </div>
-
                     </div>
                 </section>
 
-                <section className="bg-white py-24 border-t border-stone-200/40">
-                    <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
-
-                        {/* IMAGE */}
+                <section id="about" className="scroll-offset bg-white py-24 border-t border-stone-200/40">
+                    <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-10">
                         <div className="relative">
                             <img
                                 src="/images/profile/profile.webp"
                                 alt="Beauty Corner"
-                                className="w-full h-auto rounded-[2rem] shadow-md object-cover"
+                                className="h-auto w-full rounded-[2rem] object-cover shadow-md"
                             />
                         </div>
 
-                        {/* CONTENT */}
                         <div className="max-w-xl">
+                            <span className="text-sm uppercase tracking-[0.2em] text-stone-400">
+                                Über mich
+                            </span>
 
-      <span className="text-sm tracking-[0.2em] uppercase text-stone-400">
-        Über mich
-      </span>
-
-                            <h2 className="mt-4 font-display text-4xl md:text-5xl leading-tight">
+                            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
                                 Schönheit beginnt mit gepflegten Details
                             </h2>
 
-                            <p className="mt-6 text-stone-600 leading-7">
+                            <p className="mt-6 leading-7 text-stone-600">
                                 Mein Name ist Darja und ich habe mich auf hochwertige Nagelpflege
                                 und moderne Geltechniken spezialisiert. Mein Fokus liegt auf
                                 natürlichen, eleganten Ergebnissen, die perfekt zu deinem Stil passen.
                             </p>
 
-                            <p className="mt-4 text-stone-600 leading-7">
+                            <p className="mt-4 leading-7 text-stone-600">
                                 In meinem Studio arbeite ich ausschließlich mit sorgfältig ausgewählten,
                                 HEMA-freien Produkten und lege größten Wert auf Hygiene,
                                 Präzision und persönliche Beratung.
@@ -533,21 +561,20 @@ showNextImage();
 
                             <div className="mt-8">
                                 <a
-                                    href=""
-                                    className="inline-block rounded-full bg-stone-900 px-8 py-3 text-white text-sm tracking-wide hover:bg-black transition"
+                                    href={bookingHref}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block rounded-full bg-stone-900 px-8 py-3 text-sm tracking-wide text-white transition hover:bg-black"
                                 >
                                     Termin buchen
                                 </a>
                             </div>
-
                         </div>
-
                     </div>
                 </section>
 
-                <section className="bg-[#f6f1eb] py-20 lg:py-28 border-t border-stone-200/40">
+                <section id="gallery" className="scroll-offset bg-[#f6f1eb] py-20 lg:py-28 border-t border-stone-200/40">
                     <div className="mx-auto max-w-7xl px-6 lg:px-10">
-
                         <SectionHeading
                             eyebrow="Galerie"
                             title="Ausgewählte Arbeiten aus dem Studio"
@@ -555,12 +582,12 @@ showNextImage();
                             align="center"
                         />
 
-                        <div className="mt-14 grid gap-6 md:gap-8 md:grid-cols-2 xl:grid-cols-4">
+                        <div className="mt-14 grid gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-4">
                             {galleryImages.map((image, index) => (
                                 <button
                                     key={image}
                                     type="button"
-                                    className="group relative block overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition duration-300"
+                                    className="group relative block overflow-hidden rounded-2xl shadow-sm transition duration-300 hover:shadow-md"
                                     onClick={() => setSelectedImageIndex(index)}
                                 >
                                     <ImageCard
@@ -569,43 +596,34 @@ showNextImage();
                                         className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
                                     />
 
-                                    {/* overlay */}
-                                    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
-
-                                    {/* subtle border */}
-                                    <div className="pointer-events-none absolute inset-0 ring-1 ring-black/6 rounded-2xl" />
+                                    <div className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
+                                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/6" />
                                 </button>
                             ))}
                         </div>
-
                     </div>
                 </section>
 
-                <section className="bg-white py-20 lg:py-28 border-t border-stone-200/40">
+                <section id="studio" className="scroll-offset bg-white py-20 lg:py-28 border-t border-stone-200/40">
                     <div className="mx-auto max-w-7xl px-6 lg:px-10">
-
                         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-
-                            {/* TEXT */}
-                            <div className="space-y-8 max-w-xl">
+                            <div className="max-w-xl space-y-8">
                                 <SectionHeading
                                     eyebrow="Studio"
                                     title="Eine ruhige, elegante Atmosphäre mitten in Graz"
                                     description="Die echten Interior-Bilder zeigen den Stil des Studios: hell, sauber, hochwertig und einladend. Genau dieser Eindruck soll die Website transportieren."
                                 />
 
-                                <PrimaryButton>
+                                <PrimaryButton href={bookingHref} newTab>
                                     Termin anfragen
                                 </PrimaryButton>
                             </div>
 
-                            {/* IMAGES */}
                             <div className="grid gap-6 md:grid-cols-2">
-
                                 {[assets.studioImage1, assets.studioImage2, assets.studioImage3, assets.studioImage4].map((img, i) => (
                                     <div
                                         key={i}
-                                        className="group overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition duration-300"
+                                        className="group relative overflow-hidden rounded-2xl shadow-sm transition duration-300 hover:shadow-md"
                                     >
                                         <ImageCard
                                             src={img}
@@ -613,44 +631,46 @@ showNextImage();
                                             className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
                                         />
 
-                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
+                                        <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
                                     </div>
                                 ))}
-
                             </div>
-
                         </div>
-
                     </div>
                 </section>
             </main>
 
-            <footer className="relative overflow-hidden py-20 text-white bg-[url('/images/layout/layout.webp')] bg-cover bg-center">
-
-                {/* SAME overlay as navbar */}
+            <footer id="contact" className="scroll-offset relative overflow-hidden py-20 text-white bg-[url('/images/layout/layout.webp')] bg-cover bg-center">
                 <div className="absolute inset-0 bg-black/45" />
 
-                <div className="relative mx-auto max-w-7xl px-6 lg:px-10 text-center">
-
+                <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-10">
                     <BrandLogo className="mx-auto h-24 w-auto object-contain" />
 
-                    <p className="mt-8 max-w-xl mx-auto text-white/70 leading-7">
+                    <p className="mx-auto mt-8 max-w-xl leading-7 text-white/70">
                         Verwöhnen Sie Ihre Nägel im Beauty Corner Studio – Schönheit beginnt
                         mit perfekt gepflegten Händen und eleganten Designs.
                     </p>
 
+                    <div className="mt-10 flex flex-col items-center justify-center gap-3 text-white/80">
+                        <a href="tel:+436765504044" className="transition hover:text-white">
+                            +43 (0) 676 5504044
+                        </a>
+                    </div>
+
                     <div className="mt-10">
                         <a
-                            href=""
-                            className="inline-block rounded-full bg-white px-8 py-3 text-black text-sm tracking-wide hover:bg-gray-200 transition"
+                            href={bookingHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block rounded-full bg-white px-8 py-3 text-sm tracking-wide text-black transition hover:bg-gray-200"
                         >
                             Termin buchen
                         </a>
                     </div>
 
                     <div className="mt-10 flex justify-center gap-8 text-[#d8bea5]">
-                        <a href="#" className="text-xl hover:scale-110 transition hover:text-white">f</a>
-                        <a href="#" className="text-xl hover:scale-110 transition hover:text-white">◎</a>
+                        <a href="#" className="text-xl transition hover:scale-110 hover:text-white">f</a>
+                        <a href="#" className="text-xl transition hover:scale-110 hover:text-white">◎</a>
                     </div>
 
                     <div className="mt-12 h-px w-full bg-white/10" />
@@ -658,7 +678,6 @@ showNextImage();
                     <p className="mt-6 text-sm text-white/50">
                         © {new Date().getFullYear()} Beauty Corner. All rights reserved.
                     </p>
-
                 </div>
             </footer>
         </div>
