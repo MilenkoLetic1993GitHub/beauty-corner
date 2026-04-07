@@ -276,6 +276,11 @@ export default function Home() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [selectedImageIndex, showPrevImage, showNextImage]);
 
+    useEffect(() => {
+        document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+        return () => (document.body.style.overflow = "");
+    }, [mobileMenuOpen]);
+
     return (
         <div className="font-clean flex min-h-screen flex-col bg-[#f6f0eb] text-stone-900">
             <FontStyles />
@@ -331,19 +336,21 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/45" />
 
                 <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-4">
                         <a href="#home" aria-label="Go to home">
                             <BrandLogo className="h-28 w-auto object-contain brightness-110 contrast-110" />
                         </a>
-                    </div>
 
-                    <nav className="hidden items-center gap-8 lg:flex">
+                        {/* MOBILE HAMBURGER */}
                         <button
                             onClick={() => setMobileMenuOpen(true)}
                             className="lg:hidden text-2xl text-white"
                         >
                             ☰
                         </button>
+                    </div>
+
+                    <nav className="hidden items-center gap-8 lg:flex">
                         <NavLink href="#home">Home</NavLink>
                         <NavLink href="#services">Leistungen</NavLink>
                         <NavLink href="#prices">Preise</NavLink>
