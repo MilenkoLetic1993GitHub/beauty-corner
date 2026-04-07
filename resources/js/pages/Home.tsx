@@ -29,6 +29,7 @@ const galleryImages = [
 ];
 
 const bookingHref = "about:blank";
+const initialGalleryCount = 8;
 
 function FontStyles() {
     return (
@@ -212,6 +213,15 @@ function ImageCard({
 
 export default function Home() {
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+    const [showAllGalleryImages, setShowAllGalleryImages] = useState(false);
+
+    const visibleGalleryImages = useMemo(() => {
+        if (showAllGalleryImages) {
+            return galleryImages;
+        }
+
+        return galleryImages.slice(0, initialGalleryCount);
+    }, [showAllGalleryImages]);
 
     const selectedImage = useMemo(() => {
         if (selectedImageIndex === null) {
@@ -583,24 +593,40 @@ export default function Home() {
                         />
 
                         <div className="mt-14 grid gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-4">
-                            {galleryImages.map((image, index) => (
-                                <button
-                                    key={image}
-                                    type="button"
-                                    className="group relative block overflow-hidden rounded-2xl shadow-sm transition duration-300 hover:shadow-md"
-                                    onClick={() => setSelectedImageIndex(index)}
-                                >
-                                    <ImageCard
-                                        src={image}
-                                        alt={`Nail work ${index + 1}`}
-                                        className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
-                                    />
+                            {visibleGalleryImages.map((image) => {
+                                const originalIndex = galleryImages.indexOf(image);
 
-                                    <div className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
-                                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/6" />
-                                </button>
-                            ))}
+                                return (
+                                    <button
+                                        key={image}
+                                        type="button"
+                                        className="group relative block overflow-hidden rounded-2xl shadow-sm transition duration-300 hover:shadow-md"
+                                        onClick={() => setSelectedImageIndex(originalIndex)}
+                                    >
+                                        <ImageCard
+                                            src={image}
+                                            alt={`Nail work ${originalIndex + 1}`}
+                                            className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
+                                        />
+
+                                        <div className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
+                                        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/6" />
+                                    </button>
+                                );
+                            })}
                         </div>
+
+                        {!showAllGalleryImages && galleryImages.length > initialGalleryCount ? (
+                            <div className="mt-10 flex justify-center">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowAllGalleryImages(true)}
+                                    className="cursor-pointer rounded-full border border-stone-300 bg-white px-6 py-2 text-xs uppercase tracking-widest transition-all duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+                                >
+                                    Mehr anzeigen
+                                </button>
+                            </div>
+                        ) : null}
                     </div>
                 </section>
 
