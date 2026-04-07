@@ -32,9 +32,9 @@
 
         <title inertia>Beauty Corner Graz – Nagelstudio</title>
 
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/nail-house/1000201947.jpg">
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/nail-house/1000201947.jpg">
-        <link rel="apple-touch-icon" href="/images/nail-house/1000201947.jpg">
+        <link rel="icon" type="image/webp" sizes="32x32" href="/images/logo/logo.webp">
+        <link rel="icon" type="image/webp" sizes="16x16" href="/images/logo/logo.webp">
+        <link rel="apple-touch-icon" href="/images/logo/logo.webp">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />

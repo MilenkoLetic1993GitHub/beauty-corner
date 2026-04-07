@@ -1,109 +1,31 @@
-import { useEffect, useMemo, useState } from "react";
-
-type Service = {
-    id: number;
-    title: string;
-    short_description?: string | null;
-};
-
-type PriceItem = {
-    id: number;
-    name: string;
-    description?: string | null;
-    price?: string | number | null;
-    duration_minutes?: number | null;
-};
-
-type PriceCategory = {
-    id: number;
-    name: string;
-    items?: PriceItem[];
-};
-
-type Props = {
-    services?: Service[];
-    priceCategories?: PriceCategory[];
-};
-
-function formatPrice(price: string | number | null | undefined) {
-    if (price === null || price === undefined || price === "") return "-";
-
-    const numericPrice = Number(price);
-    if (Number.isNaN(numericPrice)) return `${price}`;
-
-    return `€${numericPrice.toFixed(2)}`;
-}
-
-/**
- * Put all images inside:
- * public/images/beauty-corner/
- */
-const ASSET_BASE = "/images/nail-house";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 const assets = {
-    heroBackground: `${ASSET_BASE}/1000201324.jpg`,
-    aboutImage: `${ASSET_BASE}/1000201947.jpg`,
-    studioImage1: `${ASSET_BASE}/1000201341.jpg`,
-    studioImage2: `${ASSET_BASE}/1000201338.jpg`,
-    studioImage3: `${ASSET_BASE}/1000201327.jpg`,
-    studioImage4: `${ASSET_BASE}/1000201317.jpg`,
-    logoImage: `${ASSET_BASE}/1000201947.jpg`,
+    heroBackground: `/images/studio/studio_3.webp`,
+    aboutImage: `/images/logo/logo.webp`,
+    studioImage1: `/images/studio/studio_6.webp`,
+    studioImage2: `/images/studio/studio_5.webp`,
+    studioImage3: `/images/studio/studio_4.webp`,
+    studioImage4: `/images/studio/studio_1.webp`,
+    logoImage: `/images/logo/logo.webp`,
 };
 
 const galleryImages = [
-    `${ASSET_BASE}/1000201969.png`,
-    `${ASSET_BASE}/1000201960.png`,
-    `${ASSET_BASE}/1000201975.png`,
-    `${ASSET_BASE}/1000201954.png`,
-    `${ASSET_BASE}/1000201963.png`,
-    `${ASSET_BASE}/1000201972.png`,
-    `${ASSET_BASE}/1000201966.png`,
-    `${ASSET_BASE}/1000201978.png`,
-];
-
-const defaultServices: Service[] = [
-    {
-        id: 1,
-        title: "Maniküre",
-        short_description: "Saubere, elegante und gepflegte Nägel für jeden Tag.",
-    },
-    {
-        id: 2,
-        title: "Nageldesign",
-        short_description: "Von soft nude bis kreativ und modern – individuell abgestimmt.",
-    },
-    {
-        id: 3,
-        title: "French Look",
-        short_description: "Zeitlos, feminin und hochwertig mit perfektem Finish.",
-    },
-    {
-        id: 4,
-        title: "Studio Experience",
-        short_description: "Ruhige Atmosphäre, schöne Details und ein stilvoller Besuch.",
-    },
-];
-
-const defaultPriceCategories: PriceCategory[] = [
-    {
-        id: 1,
-        name: "Beliebte Behandlungen",
-        items: [
-            { id: 11, name: "Basic Maniküre", duration_minutes: 45, price: 35 },
-            { id: 12, name: "Naturnagelverstärkung", duration_minutes: 60, price: 49 },
-            { id: 13, name: "Neumodellage", duration_minutes: 90, price: 69 },
-            { id: 14, name: "French / Design", duration_minutes: 75, price: 59 },
-        ],
-    },
-    {
-        id: 2,
-        name: "Extras",
-        items: [
-            { id: 21, name: "Babyboomer / Ombre", duration_minutes: 75, price: 59 },
-            { id: 22, name: "Individuelles Nail Art", duration_minutes: 20, price: 10 },
-            { id: 23, name: "Auffüllen", duration_minutes: 75, price: 52 },
-        ],
-    },
+    `/images/gallery/gallery_1.webp`,
+    `/images/gallery/gallery_2.webp`,
+    `/images/gallery/gallery_3.webp`,
+    `/images/gallery/gallery_4.webp`,
+    `/images/gallery/gallery_5.webp`,
+    `/images/gallery/gallery_6.webp`,
+    `/images/gallery/gallery_7.webp`,
+    `/images/gallery/gallery_8.webp`,
+    `/images/gallery/gallery_9.webp`,
+    `/images/gallery/gallery_10.webp`,
+    `/images/gallery/gallery_11.webp`,
+    `/images/gallery/gallery_12.webp`,
+    `/images/gallery/gallery_13.webp`,
+    `/images/gallery/gallery_14.webp`,
+    `/images/gallery/gallery_15.webp`,
 ];
 
 function FontStyles() {
@@ -128,11 +50,14 @@ function FontStyles() {
 
 function HeadAssets() {
     useEffect(() => {
-        if (typeof document === "undefined") return;
+        if (typeof document === "undefined") {
+return;
+}
 
         document.title = "Beauty Corner";
 
         let favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement | null;
+
         if (!favicon) {
             favicon = document.createElement("link");
             favicon.rel = "icon";
@@ -249,39 +174,60 @@ function ImageCard({
     );
 }
 
-export default function Home({
-                                 services = defaultServices,
-                                 priceCategories = defaultPriceCategories,
-                             }: Props) {
+export default function Home() {
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
     const selectedImage = useMemo(() => {
-        if (selectedImageIndex === null) return null;
+        if (selectedImageIndex === null) {
+return null;
+}
+
         return galleryImages[selectedImageIndex] ?? null;
     }, [selectedImageIndex]);
 
-    const showPrevImage = () => {
-        if (selectedImageIndex === null) return;
-        setSelectedImageIndex((selectedImageIndex - 1 + galleryImages.length) % galleryImages.length);
-    };
+    const showPrevImage = useCallback(() => {
+        if (selectedImageIndex === null) {
+return
+}
 
-    const showNextImage = () => {
-        if (selectedImageIndex === null) return;
-        setSelectedImageIndex((selectedImageIndex + 1) % galleryImages.length);
-    };
+        setSelectedImageIndex(
+            (selectedImageIndex - 1 + galleryImages.length) % galleryImages.length
+        );
+    }, [selectedImageIndex]);
+
+    const showNextImage = useCallback(() => {
+        if (selectedImageIndex === null) {
+return;
+}
+
+        setSelectedImageIndex(
+            (selectedImageIndex + 1) % galleryImages.length
+        );
+    }, [selectedImageIndex]);
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (selectedImageIndex === null) return;
+            if (selectedImageIndex === null) {
+return;
+}
 
-            if (event.key === "Escape") setSelectedImageIndex(null);
-            if (event.key === "ArrowLeft") showPrevImage();
-            if (event.key === "ArrowRight") showNextImage();
+            if (event.key === "Escape") {
+setSelectedImageIndex(null);
+}
+
+            if (event.key === "ArrowLeft") {
+showPrevImage();
+}
+
+            if (event.key === "ArrowRight") {
+showNextImage();
+}
         };
 
         window.addEventListener("keydown", handleKeyDown);
+
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [selectedImageIndex]);
+    }, [selectedImageIndex, showPrevImage, showNextImage]);
 
     return (
         <div className="font-clean flex min-h-screen flex-col bg-[#f6f0eb] text-stone-900">
@@ -334,7 +280,7 @@ export default function Home({
                 </div>
             ) : null}
 
-            <header className="sticky top-0 z-50 border-b border-white/5 text-white relative bg-[url('/images/nail-house/cracked-black-painted-wall.jpg')] bg-cover bg-center">
+            <header className="sticky top-0 z-50 border-b border-white/5 text-white relative bg-[url('/images/layout/layout.webp')] bg-cover bg-center">
 
                 {/* subtle overlay for readability */}
                 <div className="absolute inset-0 bg-black/45" />
@@ -368,7 +314,7 @@ export default function Home({
                     <div
                         className="absolute inset-0 bg-cover bg-no-repeat"
                         style={{
-                            backgroundImage: "url('/images/nail-house/hero.jpg')",
+                            backgroundImage: "url('/images/studio/studio_2.webp')",
                             backgroundPosition: "center right",
                         }}
                     />
@@ -395,14 +341,14 @@ export default function Home({
 
                                 <div className="mt-10 flex flex-wrap gap-4">
                                     <a
-                                        href="#booking"
+                                        href=""
                                         className="rounded-full bg-white px-6 py-3 text-black font-medium hover:bg-gray-200 transition"
                                     >
                                         Termin buchen
                                     </a>
 
                                     <a
-                                        href="#services"
+                                        href=""
                                         className="rounded-full border border-white px-6 py-3 text-white hover:bg-white hover:text-black transition"
                                     >
                                         Leistungen ansehen
@@ -556,7 +502,7 @@ export default function Home({
                         {/* IMAGE */}
                         <div className="relative">
                             <img
-                                src="/images/nail-house/profile_photo.png"
+                                src="/images/profile/profile.webp"
                                 alt="Beauty Corner"
                                 className="w-full h-auto rounded-[2rem] shadow-md object-cover"
                             />
@@ -587,7 +533,7 @@ export default function Home({
 
                             <div className="mt-8">
                                 <a
-                                    href="#booking"
+                                    href=""
                                     className="inline-block rounded-full bg-stone-900 px-8 py-3 text-white text-sm tracking-wide hover:bg-black transition"
                                 >
                                     Termin buchen
@@ -679,7 +625,7 @@ export default function Home({
                 </section>
             </main>
 
-            <footer className="relative overflow-hidden py-20 text-white bg-[url('/images/nail-house/cracked-black-painted-wall.jpg')] bg-cover bg-center">
+            <footer className="relative overflow-hidden py-20 text-white bg-[url('/images/layout/layout.webp')] bg-cover bg-center">
 
                 {/* SAME overlay as navbar */}
                 <div className="absolute inset-0 bg-black/45" />
@@ -695,7 +641,7 @@ export default function Home({
 
                     <div className="mt-10">
                         <a
-                            href="#booking"
+                            href=""
                             className="inline-block rounded-full bg-white px-8 py-3 text-black text-sm tracking-wide hover:bg-gray-200 transition"
                         >
                             Termin buchen
