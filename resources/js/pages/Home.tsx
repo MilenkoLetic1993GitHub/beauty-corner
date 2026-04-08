@@ -441,20 +441,24 @@ export default function Home() {
                         onClick={() => setMobileMenuOpen(false)}
                     />
 
-                    {/* MENU */}
-                    <div className={`absolute inset-0 flex flex-col items-center justify-center text-white transition-all duration-300 ${
-                        mobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                    }`}>
-                        {/* CLOSE BUTTON */}
-                        <button
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="absolute top-6 right-6 text-2xl text-white/70 transition hover:text-white"
+                    {/* MENU WRAPPER (IMPORTANT) */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        {/* MENU BOX */}
+                        <div
+                            className={`relative flex flex-col items-center gap-8 text-white text-2xl font-light tracking-wide transition-all duration-300 ${
+                                mobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                            }`}
+                            onClick={(e) => e.stopPropagation()} // 🔥 KEY FIX
                         >
-                            ✕
-                        </button>
+                            {/* CLOSE BUTTON */}
+                            <button
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="absolute -top-16 right-0 text-2xl text-white/70 transition hover:text-white"
+                            >
+                                ✕
+                            </button>
 
-                        {/* MENU ITEMS */}
-                        <div className="flex flex-col items-center gap-8 text-2xl font-light tracking-wide">
+                            {/* MENU ITEMS */}
                             {[
                                 ['Home', '#home'],
                                 ['Leistungen', '#services'],
@@ -469,9 +473,7 @@ export default function Home() {
                                     href={href}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="animate-slideUp opacity-0"
-                                    style={{
-                                        animationDelay: `${i * 0.08}s`,
-                                    }}
+                                    style={{ animationDelay: `${i * 0.08}s` }}
                                 >
                                     {label}
                                 </a>
