@@ -516,13 +516,21 @@ export default function Home() {
                     id="home"
                     className="scroll-offset relative h-[90vh] min-h-[600px] w-full overflow-hidden"
                 >
-                    <img
-                        src="/images/studio/studio_2.webp"
-                        alt="Studio"
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loading="eager"
-                        fetchPriority="high"
-                    />
+                    <picture>
+                        <source
+                            srcSet="/images/studio/studio_2_mobile.webp"
+                            media="(max-width: 768px)"
+                        />
+                        <img
+                            src="/images/studio/studio_2.webp"
+                            alt="Studio"
+                            className="absolute inset-0 w-full h-full object-cover"
+                            fetchpriority="high"
+                            loading="eager"
+                            width="1600"
+                            height="2400"
+                        />
+                    </picture>
 
                     <div className="absolute inset-0 bg-black/50" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
