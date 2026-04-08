@@ -443,14 +443,14 @@ export default function Home() {
 
                     {/* SIDE MENU */}
                     <div
-                        className={`absolute top-0 right-0 h-full w-[80%] max-w-sm bg-[#111] text-white shadow-2xl transition-transform duration-300 ${
+                        className={`absolute top-0 right-0 h-full w-[85%] max-w-[320px] bg-[#111] text-white shadow-2xl transition-transform duration-300 flex flex-col ${
                             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
                         }`}
-                        onClick={(e) => e.stopPropagation()} // 🔥 important
+                        onClick={(e) => e.stopPropagation()}
                     >
                         {/* HEADER */}
                         <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
-                        <span className="text-sm tracking-[0.2em] uppercase text-white/50">
+                        <span className="font-clean text-xs tracking-[0.3em] uppercase text-white/40">
                             Menu
                         </span>
 
@@ -463,7 +463,7 @@ export default function Home() {
                         </div>
 
                         {/* LINKS */}
-                        <div className="flex flex-col px-6 py-8 space-y-6 text-lg">
+                        <div className="flex flex-col px-6 py-10 space-y-7 font-clean">
                             {[
                                 ['Home', '#home'],
                                 ['Leistungen', '#services'],
@@ -472,25 +472,26 @@ export default function Home() {
                                 ['Galerie', '#gallery'],
                                 ['Studio', '#studio'],
                                 ['Kontakt', '#contact'],
-                            ].map(([label, href]) => (
+                            ].map(([label, href], i) => (
                                 <a
                                     key={href}
                                     href={href}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="transition text-white/80 hover:text-[#d8bea5]"
+                                    className="text-[18px] tracking-[0.08em] text-white/80 hover:text-[#d8bea5] transition border-b border-white/5 pb-4 animate-slideUp opacity-0"
+                                    style={{ animationDelay: `${i * 0.06}s` }}
                                 >
                                     {label}
                                 </a>
                             ))}
                         </div>
 
-                        {/* FOOTER (nice touch) */}
-                        <div className="mt-auto px-6 pb-8">
+                        {/* CTA */}
+                        <div className="mt-auto px-6 pb-8 pt-6">
                             <a
                                 href={bookingHref}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block text-center rounded-full bg-white px-6 py-3 text-sm tracking-wide text-black hover:bg-gray-200 transition"
+                                className="block text-center border border-white/20 px-6 py-3 text-[12px] tracking-[0.25em] uppercase text-white hover:border-[#d8bea5] hover:text-[#d8bea5] transition"
                             >
                                 Termin buchen
                             </a>
