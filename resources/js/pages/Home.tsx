@@ -443,58 +443,63 @@ export default function Home() {
 
                     {/* SIDE MENU */}
                     <div
-                        className={`absolute top-0 right-0 h-full w-[85%] max-w-[320px] bg-[#111] text-white shadow-2xl transition-transform duration-300 flex flex-col ${
+                        className={`absolute top-0 right-0 h-full w-[85%] max-w-[320px] text-white shadow-2xl transition-transform duration-300 flex flex-col bg-[url('/images/layout/layout.webp')] bg-cover bg-center ${
                             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
                         }`}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* HEADER */}
-                        <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
-                        <span className="font-clean text-xs tracking-[0.3em] uppercase text-white/40">
-                            Menu
-                        </span>
+                        {/* OVERLAY */}
+                        <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
 
-                            <button
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="text-2xl text-white/70 hover:text-white transition"
-                            >
-                                ✕
-                            </button>
-                        </div>
+                        {/* CONTENT */}
+                        <div className="relative flex flex-col h-full">
+                            {/* HEADER */}
+                            <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
+            <span className="font-clean text-xs tracking-[0.3em] uppercase text-white/40">
+                Menu
+            </span>
 
-                        {/* LINKS */}
-                        <div className="flex flex-col px-6 py-10 space-y-7 font-clean">
-                            {[
-                                ['Home', '#home'],
-                                ['Leistungen', '#services'],
-                                ['Preise', '#prices'],
-                                ['Über mich', '#about'],
-                                ['Galerie', '#gallery'],
-                                ['Studio', '#studio'],
-                                ['Kontakt', '#contact'],
-                            ].map(([label, href], i) => (
-                                <a
-                                    key={href}
-                                    href={href}
+                                <button
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="text-[18px] tracking-[0.08em] text-white/80 hover:text-[#d8bea5] transition border-b border-white/5 pb-4 animate-slideUp opacity-0"
-                                    style={{ animationDelay: `${i * 0.06}s` }}
+                                    className="text-2xl text-white/70 hover:text-white transition"
                                 >
-                                    {label}
-                                </a>
-                            ))}
-                        </div>
+                                    ✕
+                                </button>
+                            </div>
 
-                        {/* CTA */}
-                        <div className="mt-auto px-6 pb-8 pt-6">
-                            <a
-                                href={bookingHref}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block text-center border border-white/20 px-6 py-3 text-[12px] tracking-[0.25em] uppercase text-white hover:border-[#d8bea5] hover:text-[#d8bea5] transition"
-                            >
-                                Termin buchen
-                            </a>
+                            {/* LINKS */}
+                            <div className="flex flex-col px-6 py-10 space-y-7 font-clean">
+                                {[
+                                    ['Home', '#home'],
+                                    ['Leistungen', '#services'],
+                                    ['Preise', '#prices'],
+                                    ['Über mich', '#about'],
+                                    ['Galerie', '#gallery'],
+                                    ['Studio', '#studio'],
+                                    ['Kontakt', '#contact'],
+                                ].map(([label, href], i) => (
+                                    <a
+                                        key={href}
+                                        href={href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="text-[18px] tracking-[0.08em] text-white/80 hover:text-[#d8bea5] transition border-b border-white/10 pb-4"
+                                    >
+                                        {label}
+                                    </a>
+                                ))}
+                            </div>
+
+                            {/* CTA (MATCHES DESKTOP STYLE) */}
+                            <div className="mt-auto px-6 pb-8 pt-6">
+                                <a
+                                    href={bookingHref}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="font-clean inline-block w-full text-center border border-white/30 px-6 py-4 text-[12px] tracking-[0.28em] uppercase text-white hover:border-[#d8bea5] hover:text-[#d8bea5] transition"
+                                >
+                                    TERMIN BUCHEN
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
