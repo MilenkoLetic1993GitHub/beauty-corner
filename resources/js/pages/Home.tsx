@@ -449,7 +449,7 @@ export default function Home() {
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* OVERLAY */}
-                        <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+                        <div className="absolute inset-0 bg-black/30" />
 
                         {/* CONTENT */}
                         <div className="relative flex flex-col h-full">
@@ -482,7 +482,7 @@ export default function Home() {
                                         key={href}
                                         href={href}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className="text-[18px] tracking-[0.08em] text-white/80 hover:text-[#d8bea5] transition border-b border-white/10 pb-4"
+                                        className="font-clean text-sm tracking-[0.08em] text-white/85 hover:text-[#d8bea5] transition border-b border-white/10 pb-4"
                                     >
                                         {label}
                                     </a>
