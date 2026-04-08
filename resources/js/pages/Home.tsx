@@ -114,6 +114,12 @@ function HeadAssets() {
         }
 
         canonical.href = 'https://darjabeautygraz.at/';
+
+        const preload = document.createElement('link');
+        preload.rel = 'preload';
+        preload.as = 'image';
+        preload.href = '/images/studio/studio_2.webp';
+        document.head.appendChild(preload);
     }, []);
 
     return null;
@@ -510,13 +516,12 @@ export default function Home() {
                     id="home"
                     className="scroll-offset relative h-[90vh] min-h-[600px] w-full overflow-hidden"
                 >
-                    <div
-                        className="absolute inset-0 bg-cover bg-no-repeat"
-                        style={{
-                            backgroundImage:
-                                "url('/images/studio/studio_2.webp')",
-                            backgroundPosition: 'center right',
-                        }}
+                    <img
+                        src="/images/studio/studio_2.webp"
+                        alt="Studio"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
                     />
 
                     <div className="absolute inset-0 bg-black/50" />
