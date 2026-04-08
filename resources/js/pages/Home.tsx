@@ -114,12 +114,6 @@ function HeadAssets() {
         }
 
         canonical.href = 'https://darjabeautygraz.at/';
-
-        const preload = document.createElement('link');
-        preload.rel = 'preload';
-        preload.as = 'image';
-        preload.href = '/images/studio/studio_2.webp';
-        document.head.appendChild(preload);
     }, []);
 
     return null;
