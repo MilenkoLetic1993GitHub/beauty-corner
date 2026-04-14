@@ -29,6 +29,6 @@ class HomeController extends Controller
         return Inertia::render('Home', [
             'services' => $services,
             'priceCategories' => $priceCategories,
-        ]);
+        ])->cache(3600);
     }
 }
