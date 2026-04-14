@@ -182,7 +182,7 @@ function PrimaryButton({
             <a
                 href={href}
                 target={newTab ? '_blank' : undefined}
-                rel={newTab ? 'noopener noreferrer' : undefined}
+                rel={newTab ? 'noopener' : undefined}
                 className={`font-clean inline-block rounded-none border px-8 py-4 text-[12px] tracking-[0.28em] uppercase transition ${
                     dark
                         ? 'border-white/30 text-white hover:border-[#d8bea5] hover:bg-white/5 hover:text-[#d8bea5]'
