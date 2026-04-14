@@ -28,7 +28,7 @@ const galleryImages = [
     `/images/gallery/gallery_15.webp`,
 ];
 
-const bookingHref = 'about:blank';
+const bookingHref = 'https://trea.tw/Mbr97V6m6bhDZEa2n';
 const initialGalleryCount = 8;
 
 function FontStyles() {
