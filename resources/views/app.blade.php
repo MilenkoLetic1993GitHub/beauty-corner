@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @class(['dark' => ($appearance ?? 'system') == 'dark'])>
     <head>
         <link
+            fetchpriority=high
             rel="preload"
             as="image"
             href="/images/studio/studio_2_mobile.webp"
