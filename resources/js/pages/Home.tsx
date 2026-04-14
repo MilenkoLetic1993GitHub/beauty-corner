@@ -34,8 +34,6 @@ const initialGalleryCount = 8;
 function FontStyles() {
     return (
         <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
-
       html {
         scroll-behavior: smooth;
       }
@@ -477,7 +475,7 @@ export default function Home() {
                                     ['Galerie', '#gallery'],
                                     ['Studio', '#studio'],
                                     ['Kontakt', '#contact'],
-                                ].map(([label, href], i) => (
+                                ].map(([label, href]) => (
                                     <a
                                         key={href}
                                         href={href}

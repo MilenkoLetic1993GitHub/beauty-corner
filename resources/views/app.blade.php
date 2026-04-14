@@ -6,6 +6,19 @@
             as="image"
             href="/images/studio/studio_2_mobile.webp"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+            rel="stylesheet"
+        />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
