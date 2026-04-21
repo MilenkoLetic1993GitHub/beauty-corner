@@ -961,14 +961,9 @@ export default function Home() {
 
                     <div className="mt-10 flex justify-center gap-8 text-[#d8bea5]">
                         <a
-                            href="#"
+                            href="https://www.instagram.com/beautycorner_darja.graz?igsh=eHJwMDJ6djljeXV3"
                             className="text-xl transition hover:scale-110 hover:text-white"
-                        >
-                            f
-                        </a>
-                        <a
-                            href="#"
-                            className="text-xl transition hover:scale-110 hover:text-white"
+                            target="newTab"
                         >
                             ◎
                         </a>
