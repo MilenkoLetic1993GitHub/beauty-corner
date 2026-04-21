@@ -413,7 +413,7 @@ export default function Home() {
                         <NavLink href="#prices">Preise</NavLink>
                         <NavLink href="#about">Über mich</NavLink>
                         <NavLink href="#gallery">Galerie</NavLink>
-                        <NavLink href="#studio">Studio</NavLink>
+                        <NavLink href="#location">Standort</NavLink>
                         <NavLink href="#contact">Kontakt</NavLink>
                     </nav>
 
@@ -473,7 +473,7 @@ export default function Home() {
                                     ['Preise', '#prices'],
                                     ['Über mich', '#about'],
                                     ['Galerie', '#gallery'],
-                                    ['Studio', '#studio'],
+                                    ['Standort', '#location'],
                                     ['Kontakt', '#contact'],
                                 ].map(([label, href]) => (
                                     <a
@@ -517,7 +517,7 @@ export default function Home() {
                             src="/images/studio/studio_2.webp"
                             alt="Studio"
                             className="absolute inset-0 w-full h-full object-cover"
-                            fetchpriority="high"
+                            fetchPriority="high"
                             loading="eager"
                             width="1600"
                             height="2400"
@@ -866,6 +866,59 @@ export default function Home() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section
+                    id="location"
+                    className="scroll-offset border-t border-stone-200/40 bg-[#f6f1eb] py-20 lg:py-28"
+                >
+                    <div className="mx-auto max-w-7xl px-6 lg:px-10">
+                        <SectionHeading
+                            eyebrow="Standort"
+                            title="Besuchen Sie uns in Graz"
+                            description={
+                                <>
+                                    Sie finden das Beauty Corner Studio in der{' '}
+                                    <span className="whitespace-nowrap">
+                                <a
+                                    href="https://maps.google.com/?q=Jakoministraße 31, Graz"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="font-semibold text-stone-900 underline underline-offset-4 hover:text-[#d8bea5]"
+                                >
+                                    Jakoministraße 31
+                                </a>
+                                </span>{' '}
+                                    – zentral gelegen und einfach erreichbar.
+                                </>
+                            }
+                            align="center"
+                        />
+
+                        <div className="mt-10 sm:mt-12 flex flex-col">
+
+                            {/* MAP */}
+                            <div className="w-full overflow-hidden rounded-[2rem] shadow-sm ring-1 ring-stone-200">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2717.742444231865!2d15.437869491521752!3d47.064902450836215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476e4a820a972b23%3A0x9ea6deeb946bbb08!2sJakoministra%C3%9Fe%2031%2C%208010%20Graz%2C%20Austrija!5e0!3m2!1shr!2ssi!4v1776803501785!5m2!1shr!2ssi"
+                                    width="100%"
+                                    height="320"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
+                            </div>
+                        </div>
+                        <div className="mt-12 flex justify-center">
+                            <PrimaryButton
+                                href="https://maps.google.com/?q=Jakoministraße 31, Graz"
+                                newTab
+                            >
+                                Route öffnen
+                            </PrimaryButton>
                         </div>
                     </div>
                 </section>
