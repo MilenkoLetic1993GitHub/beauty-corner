@@ -962,10 +962,19 @@ export default function Home() {
                     <div className="mt-10 flex justify-center gap-8 text-[#d8bea5]">
                         <a
                             href="https://www.instagram.com/beautycorner_darja.graz?igsh=eHJwMDJ6djljeXV3"
-                            className="text-xl transition hover:scale-110 hover:text-white"
-                            target="newTab"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition hover:scale-110 hover:text-white"
+                            aria-label="Instagram"
                         >
-                            ◎
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5c3.176 0 5.75-2.574 5.75-5.75v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm8.75 1.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+                            </svg>
                         </a>
                     </div>
 
