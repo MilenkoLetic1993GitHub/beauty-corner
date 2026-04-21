@@ -419,7 +419,7 @@ export default function Home() {
 
                     <div className="hidden items-center gap-6 lg:flex">
                         <span className="font-clean text-sm tracking-[0.06em] text-white/70">
-                            +43 (0) 676 5504044
+                            +43 (0) 660 3737838
                         </span>
                         <PrimaryButton dark href={bookingHref} newTab>
                             Terminbuchung
@@ -941,10 +941,10 @@ export default function Home() {
 
                     <div className="mt-10 flex flex-col items-center justify-center gap-3 text-white/80">
                         <a
-                            href="tel:+436765504044"
+                            href="tel:+436603737838"
                             className="transition hover:text-white"
                         >
-                            +43 (0) 676 5504044
+                            +43 (0) 660 3737838
                         </a>
                     </div>
 
