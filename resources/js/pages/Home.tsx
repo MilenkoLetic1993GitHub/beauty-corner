@@ -695,7 +695,7 @@ export default function Home() {
                                     key={i}
                                     className="flex items-center justify-between gap-6 p-7 transition hover:bg-stone-50"
                                 >
-                                    <div>
+                                    <div className="min-w-0 flex-1">
                                         <h3 className="font-display text-xl">
                                             {item.title}
                                         </h3>
@@ -717,7 +717,7 @@ export default function Home() {
                                         href={bookingHref}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="cursor-pointer rounded-full border border-stone-300 bg-white px-6 py-2 text-xs tracking-widest uppercase transition-all duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+                                        className="flex-shrink-0 cursor-pointer rounded-full border border-stone-300 bg-white px-6 py-2 text-xs tracking-widest uppercase transition-all duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white"
                                     >
                                         Buchen
                                     </a>
