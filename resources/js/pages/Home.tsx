@@ -384,28 +384,28 @@ export default function Home() {
                         <a href="#home" aria-label="Go to home">
                             <BrandLogo className="h-28 w-auto object-contain brightness-110 contrast-110" />
                         </a>
-
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="relative h-6 w-8 lg:hidden"
-                        >
-                            <span
-                                className={`absolute top-0 left-0 h-[2px] w-full bg-white transition-all duration-300 ${
-                                    mobileMenuOpen ? 'top-2.5 rotate-45' : ''
-                                }`}
-                            />
-                            <span
-                                className={`absolute top-2.5 left-0 h-[2px] w-full bg-white transition-all duration-300 ${
-                                    mobileMenuOpen ? 'opacity-0' : ''
-                                }`}
-                            />
-                            <span
-                                className={`absolute bottom-0 left-0 h-[2px] w-full bg-white transition-all duration-300 ${
-                                    mobileMenuOpen ? 'bottom-2.5 -rotate-45' : ''
-                                }`}
-                            />
-                        </button>
                     </div>
+
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="relative h-6 w-8 lg:hidden"
+                    >
+                        <span
+                            className={`absolute top-0 left-0 h-[2px] w-full bg-white transition-all duration-300 ${
+                                mobileMenuOpen ? 'top-2.5 rotate-45' : ''
+                            }`}
+                        />
+                        <span
+                            className={`absolute top-2.5 left-0 h-[2px] w-full bg-white transition-all duration-300 ${
+                                mobileMenuOpen ? 'opacity-0' : ''
+                            }`}
+                        />
+                        <span
+                            className={`absolute bottom-0 left-0 h-[2px] w-full bg-white transition-all duration-300 ${
+                                mobileMenuOpen ? 'bottom-2.5 -rotate-45' : ''
+                            }`}
+                        />
+                    </button>
 
                     <nav className="hidden items-center gap-8 lg:flex">
                         <NavLink href="#home">Home</NavLink>
