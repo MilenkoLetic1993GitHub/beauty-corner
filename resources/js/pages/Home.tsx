@@ -540,24 +540,24 @@ export default function Home() {
                                     Beauty Corner
                                 </h1>
 
-                                <p className="mt-5 max-w-2xl text-lg leading-relaxed whitespace-nowrap text-white/90 md:text-xl md:whitespace-normal lg:text-2xl">
+                                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl">
                                     Professionelle Nagelpflege & hochwertige
                                     Beauty-Behandlungen in Graz
                                 </p>
 
-                                <div className="mt-10 flex flex-wrap gap-4">
+                                <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                                     <a
                                         href={bookingHref}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-gray-200"
+                                        className="inline-block w-full sm:w-fit rounded-full bg-white px-6 py-3 text-center font-medium text-black transition hover:bg-gray-200"
                                     >
                                         Termin buchen
                                     </a>
 
                                     <a
                                         href="#services"
-                                        className="rounded-full border border-white px-6 py-3 text-white transition hover:bg-white hover:text-black"
+                                        className="inline-block w-full sm:w-fit rounded-full border border-white px-6 py-3 text-center text-white transition hover:bg-white hover:text-black"
                                     >
                                         Leistungen ansehen
                                     </a>
