@@ -664,31 +664,24 @@ export default function Home() {
                         <div className="mt-12 divide-y rounded-3xl bg-white shadow-md ring-1 ring-stone-200">
                             {[
                                 {
-                                    title: 'Naturnagelverstärkung',
-                                    subtitle:
-                                        'Natürlich verstärkte Nägel mit langlebigem Gel',
-                                    prices: ['Kurz — ab 45€', 'Lang — ab 60€'],
-                                },
-                                {
-                                    title: 'Gel-Modellage',
-                                    subtitle:
-                                        'Verlängerung mit Gel für elegante Nägel',
-                                    prices: ['Kurz — ab 65€', 'Lang — ab 75€'],
-                                },
-                                {
-                                    title: 'Shellac',
-                                    subtitle: '',
-                                    prices: ['ab 35€'],
-                                },
-                                {
-                                    title: 'Refill / Auffüllen',
-                                    subtitle: '',
-                                    prices: ['ab 60€'],
-                                },
-                                {
                                     title: 'Maniküre',
                                     subtitle: '',
-                                    prices: ['inklusive'],
+                                    prices: ['ohne Lack — 30 €', 'mit Gel Lack — 40 €'],
+                                },
+                                {
+                                    title: 'Naturnagelverstärkung',
+                                    subtitle: '',
+                                    prices: ['Kurz — 45 €', 'Mittel — 50 €', 'Lang — 60 €'],
+                                },
+                                {
+                                    title: 'Nagelmodellage - Neues Set mit Gel',
+                                    subtitle: '',
+                                    prices: ['Kurz — 65 €', 'Mittel — 70 €', 'Lang — 75 €'],
+                                },
+                                {
+                                    title: 'Nagelmodellage - Auffüllen mit Gel',
+                                    subtitle: '',
+                                    prices: ['Kurz — 60 €', 'Mittel — 65 €', 'Lang — 70 €'],
                                 },
                             ].map((item, i) => (
                                 <div
